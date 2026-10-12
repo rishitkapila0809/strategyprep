@@ -31,7 +31,7 @@ export default function ResultsScreen({
     let notMastered = 0;
     let totalAttempts = 0;
     let initiallyWrongThenMastered = 0;
-    let neverAnsweredCorrectly = 0; // attempted but never mastered
+    let neverAnsweredCorrectly = 0;
 
     const notMasteredQuestionsList = [];
     const incorrectQuestionsList = [];
@@ -48,7 +48,6 @@ export default function ResultsScreen({
 
         if (mastered) {
           distinctMastered++;
-          // check if initially wrong: attempts > 1 and history had incorrect option or attemptsCount > 1
           if (attempts > 1) {
             initiallyWrongThenMastered++;
           }
@@ -105,27 +104,27 @@ export default function ResultsScreen({
   }, [quizQuestions, progress]);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 animate-in fade-in duration-200">
+    <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-6 sm:space-y-8 animate-fade-in">
       
       {/* Celebration Header */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-10 text-center relative overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
-          <Award className="w-4 h-4 text-indigo-600" />
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-8 md:p-10 text-center relative overflow-hidden animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3 animate-fade-in-up delay-50">
+          <Award className="w-4 h-4 text-indigo-600 animate-icon-entrance" />
           <span>Quiz Summary & Performance Report</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight animate-fade-in-up delay-100">
           {stats.masteryPercentage >= 80 ? 'Outstanding Performance!' : stats.masteryPercentage >= 50 ? 'Great Practice Session!' : 'Session Complete!'}
         </h1>
-        <p className="mt-2 text-sm text-slate-600 max-w-lg mx-auto">
+        <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed animate-fade-in-up delay-150">
           Here is the complete dynamic evaluation of your practice session for 
           <strong> Strategy and Technology: A Practical Primer</strong>.
         </p>
 
-        {/* Big Score Radial / Highlight */}
-        <div className="mt-8 flex flex-col items-center">
-          <div className="w-32 h-32 rounded-full border-8 border-indigo-100 flex flex-col items-center justify-center bg-indigo-50/40 relative">
-            <span className="text-3xl sm:text-4xl font-black text-indigo-600">
+        {/* Big Score Radial / Highlight with smooth pop-in */}
+        <div className="mt-6 sm:mt-8 flex flex-col items-center animate-pop-in delay-200">
+          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-6 sm:border-8 border-indigo-100 flex flex-col items-center justify-center bg-indigo-50/40 relative shadow-inner">
+            <span className="text-2xl sm:text-4xl font-black text-indigo-600">
               {stats.masteryPercentage}%
             </span>
             <span className="text-2xs font-bold text-indigo-700 uppercase tracking-wider mt-0.5">
@@ -137,15 +136,15 @@ export default function ResultsScreen({
           </p>
         </div>
 
-        {/* Primary Action Buttons */}
-        <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-3">
+        {/* Primary Action Buttons with responsive wrap and touch targets */}
+        <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
           {stats.notMastered > 0 && (
             <button
               type="button"
               onClick={() => onPracticeNotMastered(stats.notMasteredQuestionsList)}
-              className="py-3 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto py-3 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-indigo-600/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className="w-4 h-4 shrink-0" />
               <span>Practice {stats.notMastered} Not Mastered Questions</span>
             </button>
           )}
@@ -153,9 +152,9 @@ export default function ResultsScreen({
           <button
             type="button"
             onClick={onReviewAll}
-            className="py-3 px-5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto py-3 px-5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
           >
-            <BookOpen className="w-4 h-4 text-slate-500" />
+            <BookOpen className="w-4 h-4 text-slate-500 shrink-0" />
             <span>Review All Questions</span>
           </button>
 
@@ -163,9 +162,9 @@ export default function ResultsScreen({
             <button
               type="button"
               onClick={onReviewIncorrect}
-              className="py-3 px-5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto py-3 px-5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold text-xs sm:text-sm rounded-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
             >
-              <XCircle className="w-4 h-4 text-rose-600" />
+              <XCircle className="w-4 h-4 text-rose-600 shrink-0" />
               <span>Review Incorrect ({stats.neverAnsweredCorrectly})</span>
             </button>
           )}
@@ -173,102 +172,102 @@ export default function ResultsScreen({
           <button
             type="button"
             onClick={onRetryQuiz}
-            className="py-3 px-5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto py-3 px-5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
           >
-            <RotateCcw className="w-4 h-4 text-slate-500" />
+            <RotateCcw className="w-4 h-4 text-slate-500 shrink-0" />
             <span>Retry This Quiz</span>
           </button>
 
           <button
             type="button"
             onClick={onGoHome}
-            className="py-3 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto py-3 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
           >
-            <Home className="w-4 h-4" />
+            <Home className="w-4 h-4 shrink-0" />
             <span>Return to Home</span>
           </button>
         </div>
       </div>
 
-      {/* Comprehensive Metric Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      {/* Staggered Metric Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
         
-        <div className="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4.5 rounded-2xl border border-slate-200 shadow-xs hover-card-lift animate-fade-in-up delay-150">
           <div className="flex items-center justify-between text-emerald-600 mb-1">
-            <span className="text-xs font-semibold">Mastered</span>
-            <CheckCircle2 className="w-4 h-4" />
+            <span className="text-2xs sm:text-xs font-semibold">Mastered</span>
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{stats.distinctMastered}</div>
-          <div className="text-2xs text-slate-500 mt-1">Answered correctly at least once</div>
+          <div className="text-xl sm:text-2xl font-bold text-slate-900">{stats.distinctMastered}</div>
+          <div className="text-2xs text-slate-500 mt-1">Answered correctly</div>
         </div>
 
-        <div className="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4.5 rounded-2xl border border-slate-200 shadow-xs hover-card-lift animate-fade-in-up delay-200">
           <div className="flex items-center justify-between text-indigo-600 mb-1">
-            <span className="text-xs font-semibold">Distinct Attempted</span>
-            <Layers className="w-4 h-4" />
+            <span className="text-2xs sm:text-xs font-semibold">Attempted</span>
+            <Layers className="w-4 h-4 shrink-0" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{stats.distinctAttempted}</div>
-          <div className="text-2xs text-slate-500 mt-1">Out of {stats.total} total in quiz</div>
+          <div className="text-xl sm:text-2xl font-bold text-slate-900">{stats.distinctAttempted}</div>
+          <div className="text-2xs text-slate-500 mt-1">Out of {stats.total} total</div>
         </div>
 
-        <div className="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4.5 rounded-2xl border border-slate-200 shadow-xs hover-card-lift animate-fade-in-up delay-250">
           <div className="flex items-center justify-between text-amber-600 mb-1">
-            <span className="text-xs font-semibold">Overcame Mistakes</span>
-            <Sparkles className="w-4 h-4" />
+            <span className="text-2xs sm:text-xs font-semibold">Overcame Errors</span>
+            <Sparkles className="w-4 h-4 shrink-0" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{stats.initiallyWrongThenMastered}</div>
-          <div className="text-2xs text-slate-500 mt-1">Initially wrong, then mastered</div>
+          <div className="text-xl sm:text-2xl font-bold text-slate-900">{stats.initiallyWrongThenMastered}</div>
+          <div className="text-2xs text-slate-500 mt-1">Wrong, then mastered</div>
         </div>
 
-        <div className="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="bg-white p-3.5 sm:p-4.5 rounded-2xl border border-slate-200 shadow-xs hover-card-lift animate-fade-in-up delay-300">
           <div className="flex items-center justify-between text-rose-600 mb-1">
-            <span className="text-xs font-semibold">Needs Practice</span>
-            <XCircle className="w-4 h-4" />
+            <span className="text-2xs sm:text-xs font-semibold">Needs Practice</span>
+            <XCircle className="w-4 h-4 shrink-0" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{stats.notMastered}</div>
-          <div className="text-2xs text-slate-500 mt-1">Not yet answered correctly</div>
+          <div className="text-xl sm:text-2xl font-bold text-slate-900">{stats.notMastered}</div>
+          <div className="text-2xs text-slate-500 mt-1">Not yet mastered</div>
         </div>
 
       </div>
 
       {/* Additional Stats Row */}
-      <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-600">
+      <div className="bg-slate-50 rounded-2xl border border-slate-200 p-3.5 sm:p-5 flex flex-wrap items-center justify-between gap-3 text-2xs sm:text-sm text-slate-600 animate-fade-in-up delay-350">
         <div>
-          Total Answer Attempts Recorded: <strong className="text-slate-900">{stats.totalAttempts}</strong>
+          Total Answer Attempts: <strong className="text-slate-900">{stats.totalAttempts}</strong>
         </div>
         <div>
-          Unattempted in this Session: <strong className="text-slate-900">{stats.unattempted}</strong>
+          Unattempted in Session: <strong className="text-slate-900">{stats.unattempted}</strong>
         </div>
         <div>
-          Questions Attempted but never correct: <strong className="text-rose-700">{stats.neverAnsweredCorrectly}</strong>
+          Attempted but never correct: <strong className="text-rose-700">{stats.neverAnsweredCorrectly}</strong>
         </div>
       </div>
 
       {/* Week-by-Week Mastery Breakdown */}
       {weekBreakdown.length > 1 && (
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8">
-          <h3 className="font-bold text-base sm:text-lg text-slate-900 mb-4 pb-3 border-b border-slate-100">
+        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-7 md:p-8 animate-fade-in-up delay-400">
+          <h3 className="font-bold text-sm sm:text-base md:text-lg text-slate-900 mb-3.5 pb-2.5 border-b border-slate-100">
             Performance Breakdown by Week & Topic
           </h3>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             {weekBreakdown.map((w) => {
               const weekPct = w.total > 0 ? Math.round((w.mastered / w.total) * 100) : 0;
               return (
-                <div key={w.week} className="p-3.5 bg-slate-50/70 rounded-xl border border-slate-200/80">
+                <div key={w.week} className="p-3 sm:p-3.5 bg-slate-50/70 rounded-xl border border-slate-200/80 hover-card-lift">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                    <div>
+                    <div className="min-w-0">
                       <span className="font-bold text-xs text-indigo-700 mr-2">Week {w.week}</span>
                       <span className="text-xs font-semibold text-slate-800">{w.topic}</span>
                     </div>
-                    <div className="text-xs font-medium text-slate-600">
-                      {w.mastered} of {w.total} Mastered ({weekPct}%)
+                    <div className="text-2xs sm:text-xs font-medium text-slate-600">
+                      {w.mastered} / {w.total} Mastered ({weekPct}%)
                     </div>
                   </div>
 
                   <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-emerald-500 transition-all duration-300"
+                      className="h-full bg-emerald-500 transition-all duration-500 ease-out"
                       style={{ width: `${weekPct}%` }}
                     />
                   </div>

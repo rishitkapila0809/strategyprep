@@ -84,31 +84,31 @@ export default function QuestionNavigator({
   }, [questions, selectedWeekFilter, activeFilter, isTestMode, testModeAnswers, progress]);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-5 flex flex-col h-full">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-3.5 sm:p-5 flex flex-col h-full">
       {/* Navigator Header */}
-      <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-3.5">
-        <div className="flex items-center gap-2">
-          <Layers className="w-4 h-4 text-indigo-600" />
-          <h3 className="font-semibold text-sm sm:text-base text-slate-900">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
+          <h3 className="font-semibold text-xs sm:text-base text-slate-900">
             Question Navigator
           </h3>
         </div>
-        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+        <span className="text-2xs sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
           {questions.length} Items
         </span>
       </div>
 
-      {/* Week Selector Dropdown (if more than 1 week) */}
+      {/* Week Selector Dropdown */}
       {availableWeeks.length > 1 && (
-        <div className="mb-3">
-          <label htmlFor="week-filter" className="block text-xs font-medium text-slate-500 mb-1">
+        <div className="mb-2.5 sm:mb-3">
+          <label htmlFor="week-filter" className="block text-2xs font-medium text-slate-500 mb-1">
             Jump to Week / Topic:
           </label>
           <select
             id="week-filter"
             value={selectedWeekFilter}
             onChange={(e) => setSelectedWeekFilter(e.target.value)}
-            className="w-full text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-700 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+            className="w-full text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-slate-700 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 cursor-pointer transition-colors"
           >
             <option value="all">All Weeks ({questions.length} questions)</option>
             {availableWeeks.map((w) => {
@@ -124,13 +124,13 @@ export default function QuestionNavigator({
       )}
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-1 p-1 bg-slate-100/80 rounded-xl mb-4 text-xs">
+      <div className="flex flex-wrap gap-1 p-1 bg-slate-100/80 rounded-xl mb-3 text-2xs sm:text-xs">
         <button
           type="button"
           onClick={() => setActiveFilter('all')}
-          className={`flex-1 py-1.5 px-2 font-medium rounded-lg transition-all text-center cursor-pointer ${
+          className={`flex-1 py-1 px-1.5 sm:px-2 font-medium rounded-lg transition-all text-center cursor-pointer min-h-[32px] ${
             activeFilter === 'all'
-              ? 'bg-white text-slate-900 shadow-2xs font-semibold'
+              ? 'bg-white text-slate-900 shadow-2xs font-semibold scale-[1.02]'
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -142,9 +142,9 @@ export default function QuestionNavigator({
             <button
               type="button"
               onClick={() => setActiveFilter('mastered')}
-              className={`flex-1 py-1.5 px-2 font-medium rounded-lg transition-all text-center cursor-pointer ${
+              className={`flex-1 py-1 px-1.5 sm:px-2 font-medium rounded-lg transition-all text-center cursor-pointer min-h-[32px] ${
                 activeFilter === 'mastered'
-                  ? 'bg-white text-emerald-700 shadow-2xs font-semibold'
+                  ? 'bg-white text-emerald-700 shadow-2xs font-semibold scale-[1.02]'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}
             >
@@ -153,9 +153,9 @@ export default function QuestionNavigator({
             <button
               type="button"
               onClick={() => setActiveFilter('notMastered')}
-              className={`flex-1 py-1.5 px-2 font-medium rounded-lg transition-all text-center cursor-pointer ${
+              className={`flex-1 py-1 px-1.5 sm:px-2 font-medium rounded-lg transition-all text-center cursor-pointer min-h-[32px] ${
                 activeFilter === 'notMastered'
-                  ? 'bg-white text-rose-700 shadow-2xs font-semibold'
+                  ? 'bg-white text-rose-700 shadow-2xs font-semibold scale-[1.02]'
                   : 'text-slate-600 hover:text-rose-700'
               }`}
             >
@@ -166,9 +166,9 @@ export default function QuestionNavigator({
           <button
             type="button"
             onClick={() => setActiveFilter('mastered')}
-            className={`flex-1 py-1.5 px-2 font-medium rounded-lg transition-all text-center cursor-pointer ${
+            className={`flex-1 py-1 px-1.5 sm:px-2 font-medium rounded-lg transition-all text-center cursor-pointer min-h-[32px] ${
               activeFilter === 'mastered'
-                ? 'bg-white text-indigo-700 shadow-2xs font-semibold'
+                ? 'bg-white text-indigo-700 shadow-2xs font-semibold scale-[1.02]'
                 : 'text-slate-600 hover:text-indigo-700'
             }`}
           >
@@ -179,9 +179,9 @@ export default function QuestionNavigator({
         <button
           type="button"
           onClick={() => setActiveFilter('unattempted')}
-          className={`flex-1 py-1.5 px-2 font-medium rounded-lg transition-all text-center cursor-pointer ${
+          className={`flex-1 py-1 px-1.5 sm:px-2 font-medium rounded-lg transition-all text-center cursor-pointer min-h-[32px] ${
             activeFilter === 'unattempted'
-              ? 'bg-white text-slate-700 shadow-2xs font-semibold'
+              ? 'bg-white text-slate-700 shadow-2xs font-semibold scale-[1.02]'
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -189,17 +189,17 @@ export default function QuestionNavigator({
         </button>
       </div>
 
-      {/* Grid of question buttons */}
-      <div className="flex-1 overflow-y-auto pr-1 max-h-[380px] sm:max-h-[460px] min-h-[160px]">
+      {/* Grid of question buttons with smooth transition */}
+      <div className="flex-1 overflow-y-auto pr-1 max-h-[320px] sm:max-h-[460px] min-h-[160px]">
         {filteredQuestionsWithIndices.length === 0 ? (
-          <div className="text-center py-8 text-xs text-slate-400">
+          <div className="text-center py-8 text-2xs sm:text-xs text-slate-400">
             No questions match this filter.
           </div>
         ) : (
-          <div className="grid grid-cols-5 sm:grid-cols-6 gap-2">
+          <div className="grid grid-cols-5 sm:grid-cols-6 gap-1.5 sm:gap-2">
             {filteredQuestionsWithIndices.map(({ q, originalIndex }) => {
               const isCurrent = originalIndex === currentIndex;
-              let btnClass = 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50';
+              let btnClass = 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300';
               let ariaLabel = `Question ${originalIndex + 1}`;
 
               if (isTestMode) {
@@ -214,7 +214,7 @@ export default function QuestionNavigator({
                 const state = progress?.[q.id];
                 if (state?.attempted) {
                   if (state.mastered) {
-                    btnClass = 'border-emerald-500 bg-emerald-500 text-white font-semibold shadow-xs';
+                    btnClass = 'border-emerald-500 bg-emerald-500 text-white font-semibold shadow-2xs';
                     ariaLabel += ', mastered';
                   } else {
                     btnClass = 'border-rose-400 bg-rose-50 text-rose-800 font-semibold';
@@ -226,7 +226,7 @@ export default function QuestionNavigator({
               }
 
               if (isCurrent) {
-                btnClass += ' ring-2 ring-indigo-600 ring-offset-2 z-10 scale-105';
+                btnClass += ' ring-2 ring-indigo-600 ring-offset-2 z-10 scale-105 shadow-sm';
               }
 
               return (
@@ -237,7 +237,7 @@ export default function QuestionNavigator({
                     onSelectIndex(originalIndex);
                     if (onCloseMobile) onCloseMobile();
                   }}
-                  className={`h-9 rounded-xl border text-xs flex items-center justify-center transition-all cursor-pointer relative ${btnClass}`}
+                  className={`h-8 sm:h-9 rounded-xl border text-2xs sm:text-xs flex items-center justify-center transition-all duration-200 cursor-pointer relative hover:-translate-y-0.5 active:translate-y-0 active:scale-95 touch-manipulation ${btnClass}`}
                   aria-label={ariaLabel}
                   aria-current={isCurrent ? 'true' : undefined}
                 >
@@ -250,31 +250,31 @@ export default function QuestionNavigator({
       </div>
 
       {/* Visible Legend */}
-      <div className="mt-4 pt-3.5 border-t border-slate-100 text-2xs sm:text-xs text-slate-500 space-y-1.5">
-        <div className="font-semibold text-slate-600 mb-1">Status Legend:</div>
-        <div className="grid grid-cols-2 gap-2">
+      <div className="mt-3 pt-3 border-t border-slate-100 text-2xs text-slate-500 space-y-1.5">
+        <div className="font-semibold text-slate-600">Status Legend:</div>
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-md border-2 border-indigo-600 ring-1 ring-indigo-400" />
+            <span className="w-2.5 h-2.5 rounded-md border-2 border-indigo-600 ring-1 ring-indigo-400" />
             <span>Current</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-md bg-white border border-slate-300" />
+            <span className="w-2.5 h-2.5 rounded-md bg-white border border-slate-300" />
             <span>Unattempted</span>
           </div>
           {!isTestMode ? (
             <>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-md bg-emerald-500" />
+                <span className="w-2.5 h-2.5 rounded-md bg-emerald-500" />
                 <span className="text-emerald-700 font-medium">Mastered</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-md bg-rose-50 border border-rose-400 text-rose-700" />
+                <span className="w-2.5 h-2.5 rounded-md bg-rose-50 border border-rose-400" />
                 <span className="text-rose-700 font-medium">Needs Practice</span>
               </div>
             </>
           ) : (
             <div className="flex items-center gap-1.5 col-span-2">
-              <span className="w-3 h-3 rounded-md bg-indigo-50 border border-indigo-400" />
+              <span className="w-2.5 h-2.5 rounded-md bg-indigo-50 border border-indigo-400" />
               <span className="text-indigo-700 font-medium">Answer Selected</span>
             </div>
           )}

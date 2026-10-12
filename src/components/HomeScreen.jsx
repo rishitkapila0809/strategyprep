@@ -91,81 +91,90 @@ export default function HomeScreen({
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+    <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6 sm:space-y-10">
       
-      {/* Hero Banner */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-10 text-center relative overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-4">
-          <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+      {/* Hero Banner with Staggered Entrance Animations */}
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-8 md:p-10 text-center relative overflow-hidden animate-fade-in-up">
+        
+        {/* Subtitle Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3 sm:mb-4 animate-fade-in-up delay-50">
+          <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-icon-entrance" />
           <span>NPTEL Assignment Practice · 2026 Edition</span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
+        {/* Main Heading */}
+        <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto animate-fade-in-up delay-100">
           Strategy and Technology: <br className="hidden sm:inline" />
           <span className="text-indigo-600">A Practical Primer</span>
         </h1>
 
-        <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        {/* Description */}
+        <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-150">
           Master all <strong>{questions.length} official assignment questions</strong> across <strong>{weeksData.length} weeks and topics</strong>. 
           Features instant feedback, unlimited retries, detailed attempt history, and dynamic progress analytics.
         </p>
 
-        {/* Highlight Badges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto mt-7 pt-6 border-t border-slate-100 text-left">
-          <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-100">
-            <div className="text-xs text-slate-500 font-medium">Question Bank</div>
-            <div className="text-lg font-bold text-slate-900 mt-0.5">{questions.length} MCQs</div>
+        {/* Staggered Statistics Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 max-w-2xl mx-auto mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 text-left">
+          
+          <div className="p-3 sm:p-3.5 bg-slate-50/90 rounded-2xl border border-slate-100 hover-card-lift animate-fade-in-up delay-200">
+            <div className="text-2xs sm:text-xs text-slate-500 font-medium">Question Bank</div>
+            <div className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">{questions.length} MCQs</div>
           </div>
-          <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-100">
-            <div className="text-xs text-slate-500 font-medium">Curriculum</div>
-            <div className="text-lg font-bold text-slate-900 mt-0.5">{weeksData.length} Weeks</div>
+
+          <div className="p-3 sm:p-3.5 bg-slate-50/90 rounded-2xl border border-slate-100 hover-card-lift animate-fade-in-up delay-250">
+            <div className="text-2xs sm:text-xs text-slate-500 font-medium">Curriculum</div>
+            <div className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">{weeksData.length} Weeks</div>
           </div>
-          <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-100">
-            <div className="text-xs text-slate-500 font-medium">Mastered</div>
-            <div className="text-lg font-bold text-emerald-600 mt-0.5">{stats.distinctMastered} / {questions.length}</div>
+
+          <div className="p-3 sm:p-3.5 bg-slate-50/90 rounded-2xl border border-slate-100 hover-card-lift animate-fade-in-up delay-300">
+            <div className="text-2xs sm:text-xs text-slate-500 font-medium">Mastered</div>
+            <div className="text-base sm:text-lg font-bold text-emerald-600 mt-0.5">{stats.distinctMastered} / {questions.length}</div>
           </div>
-          <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-100">
-            <div className="text-xs text-slate-500 font-medium">Mastery Rate</div>
-            <div className="text-lg font-bold text-indigo-600 mt-0.5">{stats.masteryPercentage}%</div>
+
+          <div className="p-3 sm:p-3.5 bg-slate-50/90 rounded-2xl border border-slate-100 hover-card-lift animate-fade-in-up delay-350">
+            <div className="text-2xs sm:text-xs text-slate-500 font-medium">Mastery Rate</div>
+            <div className="text-base sm:text-lg font-bold text-indigo-600 mt-0.5">{stats.masteryPercentage}%</div>
           </div>
+
         </div>
       </div>
 
-      {/* Quiz Configuration Panel */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8">
-        <div className="border-b border-slate-100 pb-4 mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+      {/* Practice Configuration Panel with Entrance Animation & Micro-interactions */}
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-7 md:p-8 animate-fade-in-up delay-200">
+        <div className="border-b border-slate-100 pb-3.5 sm:pb-4 mb-5 sm:mb-6">
+          <h2 className="text-base sm:text-lg md:text-xl font-bold text-slate-900">
             Configure Your Practice Session
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-2xs sm:text-xs md:text-sm text-slate-500 mt-0.5">
             Choose what you want to practice and customize your learning experience.
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           
           {/* Step 1: Practice Scope */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+            <label className="block text-2xs sm:text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
               1. Select Questions Scope
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
               
               {/* Option: All Questions */}
               <button
                 type="button"
                 onClick={() => setSelectedScope('all')}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   selectedScope === 'all'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm">All Questions</span>
-                  {selectedScope === 'all' && <Check className="w-4 h-4 text-indigo-600" />}
+                  <span className="font-semibold text-xs sm:text-sm">All Questions</span>
+                  {selectedScope === 'all' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1">
                   Full practice covering all {questions.length} questions
                 </p>
               </button>
@@ -174,17 +183,17 @@ export default function HomeScreen({
               <button
                 type="button"
                 onClick={() => setSelectedScope('week')}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   selectedScope === 'week'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm">By Week / Topic</span>
-                  {selectedScope === 'week' && <Check className="w-4 h-4 text-indigo-600" />}
+                  <span className="font-semibold text-xs sm:text-sm">By Week / Topic</span>
+                  {selectedScope === 'week' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1">
                   Focus on one specific week's lecture topics
                 </p>
               </button>
@@ -194,17 +203,17 @@ export default function HomeScreen({
                 type="button"
                 onClick={() => setSelectedScope('unmastered')}
                 disabled={stats.distinctMastered === questions.length}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   selectedScope === 'unmastered'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm">Needs Practice</span>
-                  {selectedScope === 'unmastered' && <Check className="w-4 h-4 text-indigo-600" />}
+                  <span className="font-semibold text-xs sm:text-sm">Needs Practice</span>
+                  {selectedScope === 'unmastered' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1">
                   {stats.notMasteredCount} questions not yet mastered
                 </p>
               </button>
@@ -213,17 +222,17 @@ export default function HomeScreen({
               <button
                 type="button"
                 onClick={() => setSelectedScope('subset')}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   selectedScope === 'subset'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm">Quick Drill</span>
-                  {selectedScope === 'subset' && <Check className="w-4 h-4 text-indigo-600" />}
+                  <span className="font-semibold text-xs sm:text-sm">Quick Drill</span>
+                  {selectedScope === 'subset' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1">
                   Practice a compact subset (e.g. 10 or 25 questions)
                 </p>
               </button>
@@ -232,8 +241,8 @@ export default function HomeScreen({
 
             {/* Sub-selectors */}
             {selectedScope === 'week' && (
-              <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 animate-in fade-in duration-150">
-                <label className="block text-xs font-semibold text-slate-700 mb-2">
+              <div className="mt-3.5 p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 animate-fade-in">
+                <label className="block text-2xs sm:text-xs font-semibold text-slate-700 mb-2">
                   Choose Week / Topic:
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-56 overflow-y-auto pr-1">
@@ -242,9 +251,9 @@ export default function HomeScreen({
                       key={w.week}
                       type="button"
                       onClick={() => setSelectedWeek(w.week)}
-                      className={`p-2.5 rounded-xl border text-left text-xs transition-colors cursor-pointer ${
+                      className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer min-h-[44px] ${
                         selectedWeek === w.week
-                          ? 'border-indigo-600 bg-indigo-600 text-white font-medium shadow-xs'
+                          ? 'border-indigo-600 bg-indigo-600 text-white font-medium shadow-xs scale-[1.01]'
                           : 'border-slate-200 bg-white hover:border-slate-300 text-slate-800'
                       }`}
                     >
@@ -259,23 +268,23 @@ export default function HomeScreen({
             )}
 
             {selectedScope === 'subset' && (
-              <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 animate-in fade-in duration-150">
-                <label className="block text-xs font-semibold text-slate-700 mb-2">
+              <div className="mt-3.5 p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 animate-fade-in">
+                <label className="block text-2xs sm:text-xs font-semibold text-slate-700 mb-2">
                   Number of Questions:
                 </label>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {[10, 20, 30, 50].map((num) => (
                     <button
                       key={num}
                       type="button"
                       onClick={() => setSubsetCount(num)}
-                      className={`px-4 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                      className={`flex-1 min-w-[70px] py-2 px-3 rounded-xl text-xs font-semibold border transition-all cursor-pointer min-h-[44px] ${
                         subsetCount === num
                           ? 'bg-indigo-600 border-indigo-600 text-white shadow-xs'
                           : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      {num} Questions
+                      {num} Qs
                     </button>
                   ))}
                 </div>
@@ -285,31 +294,31 @@ export default function HomeScreen({
 
           {/* Step 2: Choose Mode */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+            <label className="block text-2xs sm:text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
               2. Choose Practice Mode
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
               
               {/* Practice Mode */}
               <button
                 type="button"
                 onClick={() => setQuizMode('practice')}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   quizMode === 'practice'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-sm">Practice Mode</span>
+                    <span className="font-bold text-xs sm:text-sm">Practice Mode</span>
                     <span className="text-2xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                       Recommended
                     </span>
                   </div>
-                  {quizMode === 'practice' && <Check className="w-4 h-4 text-indigo-600" />}
+                  {quizMode === 'practice' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1.5 leading-relaxed">
                   Instant feedback after every selection. Full correct answers revealed with unlimited retries and attempt tracking.
                 </p>
               </button>
@@ -318,17 +327,17 @@ export default function HomeScreen({
               <button
                 type="button"
                 onClick={() => setQuizMode('test')}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                className={`p-3.5 sm:p-4 rounded-2xl border text-left hover-card-lift transition-all cursor-pointer ${
                   quizMode === 'test'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
+                    ? 'border-indigo-600 bg-indigo-50/70 ring-1 ring-indigo-600 text-indigo-950 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm">Test Mode</span>
-                  {quizMode === 'test' && <Check className="w-4 h-4 text-indigo-600" />}
+                  <span className="font-bold text-xs sm:text-sm">Test Mode</span>
+                  {quizMode === 'test' && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                <p className="text-2xs sm:text-xs text-slate-500 mt-1.5 leading-relaxed">
                   Exam simulation. Answers are hidden until test submission. Freely navigate and review before submitting for final evaluation.
                 </p>
               </button>
@@ -337,44 +346,44 @@ export default function HomeScreen({
           </div>
 
           {/* Optional Timed Mode toggle */}
-          <div className="pt-2">
-            <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-slate-500" />
+          <div className="pt-1">
+            <div className="flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 shrink-0" />
                 <div>
-                  <div className="text-xs font-semibold text-slate-800">Timed Mode (Optional)</div>
+                  <div className="text-2xs sm:text-xs font-semibold text-slate-800">Timed Mode (Optional)</div>
                   <div className="text-2xs text-slate-500">Track your practice pace with a non-intrusive timer</div>
                 </div>
               </div>
-              <label className="relative inline-flex items-center cursor-pointer">
+              <label className="relative inline-flex items-center cursor-pointer shrink-0">
                 <input
                   type="checkbox"
                   checked={isTimed}
                   onChange={(e) => setIsTimed(e.target.checked)}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-slate-200 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                <div className="w-10 h-6 bg-slate-200 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
               </label>
             </div>
           </div>
 
-          {/* Big Start Button */}
-          <div className="pt-4 flex flex-col sm:flex-row gap-3">
+          {/* Big Start Button with Hover/Press Micro-interactions */}
+          <div className="pt-3 sm:pt-4 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={handleStart}
-              className="flex-1 py-4 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-2xl shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 flex items-center justify-center gap-2.5 transition-all active:scale-98 cursor-pointer"
+              className="flex-1 py-3.5 sm:py-4 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base rounded-2xl shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 flex items-center justify-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all cursor-pointer min-h-[48px]"
             >
-              <Play className="w-5 h-5 fill-current" />
+              <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current shrink-0" />
               <span>{hasExistingSession ? 'Start / Continue Practicing' : 'Start Practicing Now'}</span>
             </button>
 
             <button
               type="button"
               onClick={onReviewAll}
-              className="py-4 px-6 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="py-3.5 sm:py-4 px-6 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-2xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[48px]"
             >
-              <BookOpen className="w-4 h-4 text-slate-500" />
+              <BookOpen className="w-4 h-4 text-slate-500 shrink-0" />
               <span>Browse All Questions</span>
             </button>
           </div>
@@ -383,66 +392,63 @@ export default function HomeScreen({
       </div>
 
       {/* Week-by-Week Curriculum Table */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8">
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-5 sm:p-7 md:p-8 animate-fade-in-up delay-300">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 pb-3.5 mb-3.5 border-b border-slate-100">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-900">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold text-slate-900">
               Curriculum & Topics Overview
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-2xs sm:text-xs text-slate-500">
               Click any week to jump straight into practicing that unit
             </p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+          <span className="text-2xs sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 self-start sm:self-auto mt-1 sm:mt-0">
             {weeksData.length} Units
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {weeksData.map((w) => {
-            const isCompleted = w.mastered === w.count && w.count > 0;
-            return (
-              <button
-                key={w.week}
-                type="button"
-                onClick={() => {
-                  setSelectedScope('week');
-                  setSelectedWeek(w.week);
-                  onStartQuiz({
-                    scope: 'week',
-                    selectedWeek: w.week,
-                    subsetCount: null,
-                    mode: quizMode,
-                    isTimed,
-                  });
-                }}
-                className="p-3.5 rounded-2xl border border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/30 transition-all text-left flex items-start justify-between gap-2 group cursor-pointer"
-              >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xs font-bold text-indigo-700">Week {w.week}</span>
-                    <span className="text-2xs text-slate-400">({w.count} MCQs)</span>
-                  </div>
-                  <div className="text-xs font-medium text-slate-800 line-clamp-1 group-hover:text-indigo-900">
-                    {w.topic}
-                  </div>
-                  <div className="text-2xs text-slate-500">
-                    {w.mastered > 0 ? (
-                      <span className="text-emerald-700 font-medium">
-                        {w.mastered} / {w.count} Mastered
-                      </span>
-                    ) : (
-                      'Not yet attempted'
-                    )}
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3">
+          {weeksData.map((w) => (
+            <button
+              key={w.week}
+              type="button"
+              onClick={() => {
+                setSelectedScope('week');
+                setSelectedWeek(w.week);
+                onStartQuiz({
+                  scope: 'week',
+                  selectedWeek: w.week,
+                  subsetCount: null,
+                  mode: quizMode,
+                  isTimed,
+                });
+              }}
+              className="p-3 sm:p-3.5 rounded-2xl border border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/30 hover-card-lift transition-all text-left flex items-start justify-between gap-2 group cursor-pointer min-h-[64px]"
+            >
+              <div className="space-y-1 min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-indigo-700">Week {w.week}</span>
+                  <span className="text-2xs text-slate-400">({w.count} MCQs)</span>
                 </div>
+                <div className="text-xs font-medium text-slate-800 truncate group-hover:text-indigo-900">
+                  {w.topic}
+                </div>
+                <div className="text-2xs text-slate-500">
+                  {w.mastered > 0 ? (
+                    <span className="text-emerald-700 font-medium">
+                      {w.mastered} / {w.count} Mastered
+                    </span>
+                  ) : (
+                    'Not yet attempted'
+                  )}
+                </div>
+              </div>
 
-                <div className="pt-1 text-slate-400 group-hover:text-indigo-600 transition-colors">
-                  <ChevronRight className="w-4 h-4" />
-                </div>
-              </button>
-            );
-          })}
+              <div className="pt-1 text-slate-400 group-hover:text-indigo-600 transition-colors shrink-0">
+                <ChevronRight className="w-4 h-4" />
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 
