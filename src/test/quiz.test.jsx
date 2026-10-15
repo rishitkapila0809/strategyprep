@@ -82,7 +82,7 @@ describe('Strategy and Technology MCQ Practice Application', () => {
     fireEvent.click(nextBtn);
 
     expect(screen.getByText(/Question 2 of 120/i)).toBeTruthy();
-    expect(screen.getByText(/Which of the following is not an external threat for a typical company\?/i)).toBeTruthy();
+    expect(screen.getByText(/external threat for a typical company/i)).toBeTruthy();
 
     // Click Previous -> moves back to Q1
     const prevBtn = screen.getByText(/Previous/i);

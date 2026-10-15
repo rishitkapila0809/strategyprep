@@ -25,29 +25,31 @@ export default function QuestionCard({
       className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs p-4 sm:p-7 md:p-8 animate-question-slide transition-shadow duration-300"
     >
       {/* Top Meta info */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5 sm:pb-5 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 sm:pb-5 border-b border-slate-100">
         <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-          <span className="px-2.5 py-1 rounded-full text-2xs sm:text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+          <span className="px-2.5 py-1 rounded-full text-2xs sm:text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 break-words max-w-full">
             Week {week} · {topic}
           </span>
-          <span className="px-2 py-0.5 rounded-full text-2xs sm:text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+          <span className="px-2 py-0.5 rounded-full text-2xs sm:text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
             ID #{id}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          {!isTestMode && isMastered && (
-            <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-2xs sm:text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pop-in">
-              <Award className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Mastered</span>
-            </span>
-          )}
-          {!isTestMode && attemptsCount > 0 && (
-            <span className="text-2xs sm:text-xs text-slate-400 font-medium">
-              {attemptsCount} {attemptsCount === 1 ? 'attempt' : 'attempts'}
-            </span>
-          )}
-          <span className="text-2xs sm:text-xs font-semibold text-slate-500 bg-slate-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-slate-200">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-between sm:justify-end">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {!isTestMode && isMastered && (
+              <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-2xs sm:text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pop-in shrink-0">
+                <Award className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Mastered</span>
+              </span>
+            )}
+            {!isTestMode && attemptsCount > 0 && (
+              <span className="text-2xs sm:text-xs text-slate-400 font-medium shrink-0">
+                {attemptsCount} {attemptsCount === 1 ? 'attempt' : 'attempts'}
+              </span>
+            )}
+          </div>
+          <span className="text-2xs sm:text-xs font-semibold text-slate-500 bg-slate-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-slate-200 shrink-0">
             Question {displayIndex + 1} of {totalQuestions}
           </span>
         </div>
@@ -84,11 +86,11 @@ export default function QuestionCard({
       <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-slate-100">
         {isTestMode ? (
           <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-2xs sm:text-xs md:text-sm text-slate-600 flex items-center justify-between gap-2">
-            <span className="truncate">
+            <span className="break-words flex-1">
               {selectedOption ? (
                 <span className="text-indigo-700 font-medium">Option {selectedOption} selected.</span>
               ) : (
-                'Select an option above. You can change your choice anytime.'
+                'Select an option above. You can change your choice anytime before submitting.'
               )}
             </span>
             <span className="text-2xs text-slate-400 font-medium shrink-0">Test Mode</span>

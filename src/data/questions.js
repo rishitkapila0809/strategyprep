@@ -56,14 +56,14 @@ export const questions = [
     id: 2,
     week: 1,
     topic: "Structural and Strategic Analysis",
-    question: "Which of the following is not an external threat for a typical company?",
+    question: "Which of the following is an external threat for a typical company?",
     options: [
       { id: "A", text: "Aggressive actions of its competitors" },
       { id: "B", text: "Growth of the global economy" },
       { id: "C", text: "Capital induction from investors and shareholders" },
       { id: "D", text: "External talent wanting to enter the company" }
     ],
-    correctAnswer: "C",
+    correctAnswer: "A",
     explanation: ""
   },
   {
@@ -389,7 +389,7 @@ export const questions = [
       { id: "C", text: "Laggard" },
       { id: "D", text: "Loser" }
     ],
-    correctAnswer: "C",
+    correctAnswer: "B",
     explanation: ""
   },
   {
@@ -829,7 +829,7 @@ export const questions = [
       { id: "C", text: "Combines differentiation leadership with cost leadership" },
       { id: "D", text: "Follows neither cost leadership nor differentiation" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "C",
     explanation: ""
   },
   {

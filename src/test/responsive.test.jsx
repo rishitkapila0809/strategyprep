@@ -5,11 +5,12 @@ import App from '../App';
 import { questions } from '../data/questions';
 
 const VIEWPORTS = [
-  { name: 'small mobile', width: 320, height: 568 },
-  { name: 'standard mobile', width: 375, height: 667 },
-  { name: 'modern mobile', width: 390, height: 844 },
-  { name: 'large mobile', width: 430, height: 932 },
-  { name: 'tablet', width: 768, height: 1024 },
+  { name: 'small mobile (SE)', width: 320, height: 568 },
+  { name: 'android standard', width: 360, height: 800 },
+  { name: 'standard mobile (iPhone 8)', width: 375, height: 667 },
+  { name: 'modern mobile (iPhone 13/14/15)', width: 390, height: 844 },
+  { name: 'large mobile (Pro Max / Plus)', width: 430, height: 932 },
+  { name: 'tablet (iPad)', width: 768, height: 1024 },
   { name: 'small laptop', width: 1024, height: 768 },
   { name: 'desktop', width: 1440, height: 900 },
 ];

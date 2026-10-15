@@ -13,8 +13,8 @@ export default function Header({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Logo & Course Info */}
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          {/* Logo & Course Info - Left */}
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 sm:flex-none">
             <button
               onClick={onNavigateHome}
               className="flex items-center gap-2 sm:gap-2.5 text-left group transition-transform active:scale-98 cursor-pointer min-w-0"
@@ -29,21 +29,22 @@ export default function Header({
                   <span className="font-bold text-base sm:text-lg text-slate-900 tracking-tight whitespace-nowrap">
                     Strategy<span className="text-indigo-600">Prep</span>
                   </span>
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-2xs sm:text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-2xs sm:text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 shrink-0">
                     2026
                   </span>
                 </div>
-                <div className="text-2xs sm:text-xs text-slate-500 font-medium truncate max-w-[150px] xs:max-w-[200px] sm:max-w-xs md:max-w-md">
+                <div className="text-2xs sm:text-xs text-slate-500 font-medium truncate max-w-[130px] sm:max-w-xs md:max-w-md">
                   Strategy and Technology: A Practical Primer
                 </div>
               </div>
             </button>
           </div>
 
-          {/* Action buttons and indicators */}
+          {/* Action buttons and indicators - Right */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            {/* Desktop & Tablet only: Mode badge is shown here on sm: and above, avoiding mobile collision */}
             {quizMode && currentView === 'quiz' && (
-              <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 text-2xs sm:text-xs font-semibold rounded-lg border whitespace-nowrap ${
+              <span className={`hidden sm:inline-flex px-2.5 py-1 text-xs font-semibold rounded-lg border whitespace-nowrap ${
                 quizMode === 'test'
                   ? 'bg-amber-50 text-amber-800 border-amber-200'
                   : 'bg-emerald-50 text-emerald-800 border-emerald-200'
@@ -60,22 +61,24 @@ export default function Header({
             {currentView !== 'home' && (
               <button
                 onClick={onNavigateHome}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:px-3 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-2xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all cursor-pointer min-h-[36px] sm:min-h-[38px]"
+                className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 sm:px-3 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-2xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all cursor-pointer min-h-[40px] sm:min-h-[38px]"
                 title="Go to Home Screen"
+                aria-label="Home"
               >
-                <Home className="w-3.5 h-3.5 text-slate-500" />
-                <span className="hidden xs:inline">Home</span>
+                <Home className="w-4 h-4 text-slate-500 shrink-0" />
+                <span className="hidden sm:inline">Home</span>
               </button>
             )}
 
             <button
               onClick={onOpenResetModal}
-              className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:px-3 text-xs font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 rounded-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all cursor-pointer min-h-[36px] sm:min-h-[38px]"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 sm:px-3 text-xs font-medium text-slate-600 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 rounded-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all cursor-pointer min-h-[40px] sm:min-h-[38px]"
               title="Reset session progress"
+              aria-label="Reset Progress"
             >
               <RotateCcw className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">Reset Progress</span>
-              <span className="inline sm:hidden text-2xs sm:text-xs">Reset</span>
+              <span className="inline sm:hidden text-2xs sm:text-xs font-medium">Reset</span>
             </button>
           </div>
 

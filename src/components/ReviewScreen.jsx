@@ -64,7 +64,7 @@ export default function ReviewScreen({
           <button
             type="button"
             onClick={onBack}
-            className="inline-flex items-center gap-1.5 text-2xs sm:text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors mb-1.5 cursor-pointer min-h-[36px]"
+            className="inline-flex items-center gap-1.5 text-2xs sm:text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors mb-1.5 cursor-pointer min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span>Back to Previous Screen</span>
@@ -105,40 +105,42 @@ export default function ReviewScreen({
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-1.5 flex-wrap text-2xs sm:text-xs">
-          <button
-            type="button"
-            onClick={() => setFilterMode('all')}
-            className={`flex-1 sm:flex-none px-3 py-2 rounded-xl font-medium transition-all cursor-pointer min-h-[40px] ${
-              filterMode === 'all'
-                ? 'bg-slate-900 text-white font-semibold shadow-2xs'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            All
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilterMode('notMastered')}
-            className={`flex-1 sm:flex-none px-3 py-2 rounded-xl font-medium transition-all cursor-pointer min-h-[40px] ${
-              filterMode === 'notMastered'
-                ? 'bg-rose-600 text-white font-semibold shadow-2xs'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            Needs Practice
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilterMode('mastered')}
-            className={`flex-1 sm:flex-none px-3 py-2 rounded-xl font-medium transition-all cursor-pointer min-h-[40px] ${
-              filterMode === 'mastered'
-                ? 'bg-emerald-600 text-white font-semibold shadow-2xs'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            Mastered
-          </button>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 text-2xs sm:text-xs">
+          <div className="grid grid-cols-3 sm:flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setFilterMode('all')}
+              className={`px-3 py-2 rounded-xl font-medium transition-all text-center cursor-pointer min-h-[40px] ${
+                filterMode === 'all'
+                  ? 'bg-slate-900 text-white font-semibold shadow-2xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              All
+            </button>
+            <button
+              type="button"
+              onClick={() => setFilterMode('notMastered')}
+              className={`px-3 py-2 rounded-xl font-medium transition-all text-center cursor-pointer min-h-[40px] ${
+                filterMode === 'notMastered'
+                  ? 'bg-rose-600 text-white font-semibold shadow-2xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              Needs Practice
+            </button>
+            <button
+              type="button"
+              onClick={() => setFilterMode('mastered')}
+              className={`px-3 py-2 rounded-xl font-medium transition-all text-center cursor-pointer min-h-[40px] ${
+                filterMode === 'mastered'
+                  ? 'bg-emerald-600 text-white font-semibold shadow-2xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              Mastered
+            </button>
+          </div>
 
           {/* Week Selector */}
           {availableWeeks.length > 1 && (
@@ -188,7 +190,7 @@ export default function ReviewScreen({
                     <span className="font-bold text-2xs sm:text-xs text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-lg border border-indigo-100">
                       Week {q.week}
                     </span>
-                    <span className="text-2xs sm:text-xs font-semibold text-slate-600 truncate max-w-[200px] sm:max-w-none">
+                    <span className="text-2xs sm:text-xs font-semibold text-slate-600 break-words">
                       {q.topic}
                     </span>
                     <span className="text-2xs font-medium text-slate-400">

@@ -54,30 +54,30 @@ export default function ProgressBar({
         )}
       </div>
 
-      {/* Small Stat Badges */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-100 text-2xs sm:text-xs text-slate-600">
+      {/* Small Stat Badges: Clean 2-column grid on mobile, flex on desktop */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-4 mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-100 text-2xs sm:text-xs text-slate-600">
         {!isTestMode && (
-          <div className="flex items-center gap-1 sm:gap-1.5">
+          <div className="flex items-center gap-1.5 min-w-0">
             <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-500 shrink-0" />
-            <span>Mastered: <strong className="text-slate-800 transition-all duration-300">{masteredCount}</strong></span>
+            <span className="truncate">Mastered: <strong className="text-slate-800 transition-all duration-300">{masteredCount}</strong></span>
           </div>
         )}
-        <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="flex items-center gap-1.5 min-w-0">
           <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-indigo-500 shrink-0" />
-          <span>Attempted: <strong className="text-slate-800 transition-all duration-300">{attemptedCount}</strong></span>
+          <span className="truncate">Attempted: <strong className="text-slate-800 transition-all duration-300">{attemptedCount}</strong></span>
         </div>
         {!isTestMode && (
-          <div className="flex items-center gap-1 sm:gap-1.5">
+          <div className="flex items-center gap-1.5 min-w-0">
             <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-rose-400 shrink-0" />
-            <span>Needs Practice: <strong className="text-slate-800 transition-all duration-300">{notMasteredCount}</strong></span>
+            <span className="truncate">Needs Practice: <strong className="text-slate-800 transition-all duration-300">{notMasteredCount}</strong></span>
           </div>
         )}
-        <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="flex items-center gap-1.5 min-w-0">
           <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-slate-300 shrink-0" />
-          <span>Pending: <strong className="text-slate-800">{totalQuestions - attemptedCount}</strong></span>
+          <span className="truncate">Pending: <strong className="text-slate-800">{totalQuestions - attemptedCount}</strong></span>
         </div>
         {!isTestMode && totalAttempts > 0 && (
-          <div className="text-slate-400 ml-auto hidden md:block">
+          <div className="text-slate-400 col-span-2 sm:col-span-1 sm:ml-auto hidden md:block">
             Total attempts: {totalAttempts}
           </div>
         )}

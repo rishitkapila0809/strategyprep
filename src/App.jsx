@@ -357,7 +357,7 @@ export default function App() {
             <strong>StrategyPrep</strong> · Strategy and Technology: A Practical Primer (NPTEL 2026)
           </div>
           <div>
-            Dynamic Question Bank: {questions.length} Questions Loaded
+            Created by : R.Kapila
           </div>
         </div>
       </footer>
